@@ -1,0 +1,59 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
+
+publish {
+    userOrg = 'yisongjiayou'//jcenter账户的用户名
+//    repoName = 'maven' //仓库名,不指明,默认传到maven
+    groupId = 'com.offcn.calendarview'//jcenter上的路径名,一般使用项目包名
+    artifactId = 'calendarview'//项目名称
+    publishVersion = '1.2.0'//版本号
+    desc = 'a library from https://github.com/huanghaibin-dev/CalendarView '//描述,中文会乱码,应该使用英文
+    website = 'https://github.com/jasonMouse/ConstraintLayoutDemo.git'//这里得填写此项目的github地址,否则不能同步到jcenter
+}
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "29.0.1"
+
+    defaultConfig {
+        minSdkVersion 14
+        //noinspection OldTargetApi
+        targetSdkVersion 28
+        versionCode 364
+        versionName "3.6.4"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    android {
+        lintOptions {
+            abortOnError false
+        }
+    }
+    task intoJar(type: Copy) {
+        delete 'build/libs/CalendarView.jar'
+        from('build/intermediates/bundles/release/')
+        into('build/libs/')
+        include('classes.jar')
+        rename ('classes.jar', 'CalendarView.jar')
+    }
+    intoJar.dependsOn(build)
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    //noinspection GradleDependency
+    implementation 'com.android.support:appcompat-v7:28+'
+    //noinspection GradleDependency
+    implementation 'com.android.support:recyclerview-v7:28+'
+    testImplementation 'junit:junit:4.12'
+}

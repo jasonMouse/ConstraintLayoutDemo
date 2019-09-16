@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape_ffffff_top_left_right_7dp"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/s_60dp"
+        android:gravity="center_vertical">
+
+        <ImageView
+            android:id="@+id/ivLastMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="@dimen/s_20dp"
+            android:paddingRight="@dimen/s_12dp"
+            android:src="@drawable/calendar_month_last_selector" />
+
+        <TextView
+            android:id="@+id/tvCurMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/ivLastMonth"
+            android:gravity="center_vertical"
+            android:text="@string/str_select_bottom_date"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/s_22sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/ivNextMonth"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/tvCurMonth"
+            android:paddingLeft="@dimen/s_12dp"
+            android:paddingRight="@dimen/s_20dp"
+            android:src="@drawable/calendar_month_next_selector" />
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="@dimen/s_20dp"
+            android:paddingRight="@dimen/s_20dp"
+            android:src="@drawable/pop_class_close" />
+    </RelativeLayout>
+
+    <com.offcn.calendarview.CalendarLayout
+        android:id="@+id/calendarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        android:orientation="vertical"
+        app:calendar_show_mode="only_month_view"
+        app:default_status="expand"
+        app:gesture_mode="disabled">
+
+        <com.offcn.calendarview.CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            app:calendar_padding="0dp"
+            app:current_day_lunar_text_color="@color/color_2b96ff"
+            app:current_day_text_color="@color/color_2b96ff"
+            app:current_month_lunar_text_color="@color/color_b4b4b4"
+            app:current_month_text_color="@color/color_333333"
+            app:day_text_size="@dimen/s_17sp"
+            app:lunar_text_size="@dimen/s_10sp"
+            app:month_view="com.mouse.demo.view.CustomMonthView"
+            app:month_view_auto_select_day="last_select_day_ignore_current"
+            app:month_view_bottom_margin="@dimen/s_12dp"
+            app:month_view_show_mode="mode_fix"
+            app:month_view_top_margin="@dimen/s_12dp"
+            app:other_month_lunar_text_color="@color/color_cccccc"
+            app:other_month_text_color="@color/color_cccccc"
+            app:select_mode="single_mode"
+            app:selected_lunar_text_color="@color/color_ffffff"
+            app:selected_text_color="@color/color_ffffff"
+            app:selected_theme_color="@color/color_2b96ff"
+            app:week_background="@color/color_ffffff"
+            app:week_bar_height="@dimen/s_30dp"
+            app:week_bar_view="com.mouse.demo.view.CustomWeekBar"
+            app:week_line_background="@color/color_eeeeee"
+            app:week_line_margin="0dp"
+            app:week_start_with="sun"
+            app:week_text_size="@dimen/s_12sp" />
+    </com.offcn.calendarview.CalendarLayout>
+</LinearLayout>
